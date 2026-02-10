@@ -266,16 +266,6 @@ public class DroneTrafficLightDetector : MonoBehaviour
 
 ---
 
-## 6. Deliverables
-
-- Unity project folder
-- Screenshots showing:
-  - Drone movement
-  - Traffic light in RED, YELLOW, and GREEN states
-- Written answers to the questions above
-
----
-
-## 7. Conclusion
+## 6. Conclusion
 
 This laboratory demonstrates how fundamental vector operations—addition, normalization, and dot product—are used in practical computer graphics scenarios. These concepts form the basis for camera control, lighting, and visibility testing in later chapters.
