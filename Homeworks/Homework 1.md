@@ -129,22 +129,15 @@ Let:
 - p_port = port position
 
 Compute:
-$$
-\mathbf{d} = \frac{\mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}}}
-{\left\| \mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}} \right\|}
-$$
+d = (p_drone − p_port) / ||p_drone − p_port||
 
-Let $\mathbf{f}_{\text{port}}$ be the port's forward direction.
+Let f_port be the port's forward direction.
 Compute dot product:
-$$
-s = \mathbf{f}_{\text{port}} \cdot \mathbf{d}
-$$
+s = f_port · d
 
 
 Use a threshold derived from field-of-view angle:
-$$
-s \ge \cos\left(\frac{\text{FOV}}{2}\right)
-$$
+s >= cos(FOV / 2)
 
 
 Docking is valid only if:
