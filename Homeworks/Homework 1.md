@@ -130,12 +130,11 @@ Let:
 
 Compute:
 $$
-\mathbf{d} =
-\frac{\mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}}}
+\mathbf{d} = \frac{\mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}}}
 {\left\| \mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}} \right\|}
 $$
 
-Let f_port be the port's forward direction.
+Let $\mathbf{f}_{\text{port}}$ be the port's forward direction.
 Compute dot product:
 $$
 s = \mathbf{f}_{\text{port}} \cdot \mathbf{d}
