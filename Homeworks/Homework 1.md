@@ -76,14 +76,12 @@ Rotation must be controlled manually through code.
 Implement movement using vector mathematics.
 
 Controls:
-- W / S --- Forward / Backward
-- A / D --- Left / Right
-- Left Shift --- Up
-- Left Ctrl --- Down
+- W / S - Forward / Backward
+- A / D - Left / Right
+- Left Shift - Up
+- Left Ctrl - Down
 
 Movement must be relative to the drone's local coordinate system:
-
-  
 
 - Forward → transform.forward
 
@@ -129,14 +127,18 @@ Let:
 - p_port = port position
 
 Compute:
+
 d = (p_drone − p_port) / ||p_drone − p_port||
 
 Let f_port be the port's forward direction.
+
 Compute dot product:
+
 s = f_port · d
 
 
 Use a threshold derived from field-of-view angle:
+
 s >= cos(FOV / 2)
 
 
