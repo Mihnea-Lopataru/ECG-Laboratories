@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework 1</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="homework-1---drone-docking-in-a-rotating-space-station">Homework 1 - Drone Docking in a Rotating Space Station</h1>
+<h2 id="general-information">General Information</h2>
+<ul>
+<li>Duration: 3 weeks</li>
+<li>Total Points: 100</li>
+<li>Base Points (granted automatically): 10</li>
+<li>Maximum Earnable Points: 90</li>
+</ul>
+<p>This is the first major homework assignment. It integrates concepts from:</p>
+<ul>
+<li>Laboratory 1 - Unity setup and scene organization</li>
+<li>Laboratory 2 - Vector movement and dot product detection</li>
+<li>Laboratory 3 - Hierarchical transformations</li>
+<li>Laboratory 4 - Euler and Quaternion rotations</li>
+</ul>
+<p>The focus of this assignment is mathematical correctness and proper implementation of rotation systems.</p>
+<hr>
+<h1 id="scenario">1. Scenario</h1>
+<p>You must implement a controllable drone that navigates and docks at multiple docking ports mounted on a rotating space station.</p>
+<p>The space station must use hierarchical transforms (parent–child pivots). Each docking port must evaluate alignment using the dot product between its forward direction and the direction toward the drone.</p>
+<p>The drone must support two rotation control modes:</p>
+<ul>
+<li>Euler-based accumulation</li>
+<li>Quaternion-based incremental composition</li>
+</ul>
+<p>The user must be able to toggle between the two modes using a single UI button.</p>
+<hr>
+<h1 id="scene-requirements">2. Scene Requirements</h1>
+<p>Create a scene named:</p>
+<pre class=" language-bash"><code class="prism  language-bash">Homework1_Docking
+</code></pre>
+<p>The scene must contain:</p>
+<ul>
+<li>A ground plane (or space platform)</li>
+<li>A drone object (cube or simple model)</li>
+<li>A rotating space station built using hierarchy</li>
+<li>At least 5 obstacles (with colliders)</li>
+</ul>
+<hr>
+<h1 id="drone-requirements">3. Drone Requirements</h1>
+<h2 id="rigidbody-setup">3.1 Rigidbody Setup</h2>
+<p>The drone must:</p>
+<ul>
+<li>Have a Rigidbody</li>
+<li>Have a Collider</li>
+<li>Not pass through objects</li>
+<li>Use continuous collision detection</li>
+</ul>
+<p>Recommended Rigidbody settings:</p>
+<ul>
+<li>Use Gravity: OFF</li>
+<li>Is Kinematic: OFF</li>
+<li>Interpolation: Interpolate</li>
+<li>Freeze Rotation X, Y, Z</li>
+</ul>
+<p>Rotation must be controlled manually through code.</p>
+<hr>
+<h2 id="movement-vector-based">3.2 Movement (Vector-Based)</h2>
+<p>Implement movement using vector mathematics.</p>
+<p>Controls:</p>
+<ul>
+<li>W / S — Forward / Backward</li>
+<li>A / D — Left / Right</li>
+<li>Left Shift — Up</li>
+<li>Left Ctrl — Down</li>
+</ul>
+<p>Movement must be relative to the drone’s local coordinate system:</p>
+<ul>
+<li>
+<p>Forward → transform.forward</p>
+</li>
+<li>
+<p>Right → transform.right</p>
+</li>
+<li>
+<p>Up → Vector3.up</p>
+</li>
+</ul>
+<p>Diagonal movement must be normalized to avoid increased speed.</p>
+<hr>
+<h1 id="space-station-hierarchical-transforms">4. Space Station (Hierarchical Transforms)</h1>
+<p>The station must be constructed using parent-child relationships.</p>
+<p>Example structure:</p>
+<pre class=" language-text"><code class="prism  language-text">StationRoot
+├── RingPivot
+│ └── RingMesh
+│ ├── Port_1
+│ ├── Port_2
+│ └── Port_3
+└── AntennaPivot
+└── AntennaMesh
+</code></pre>
+<p>Requirements:</p>
+<ul>
+<li>RingPivot must rotate continuously.</li>
+<li>AntennaPivot must rotate independently (different speed and/or axis).</li>
+<li>Docking ports must move because of parent rotation (not independent animation).</li>
+</ul>
+<hr>
+<h1 id="docking-port-alignment-system-dot-product">5. Docking Port Alignment System (Dot Product)</h1>
+<p>Each docking port must detect alignment using vector mathematics.</p>
+<h2 id="alignment-computation">5.1 Alignment Computation</h2>
+<p>Let:</p>
+<ul>
+<li>p_drone = drone position</li>
+<li>p_port = port position</li>
+</ul>
+<p>Compute:<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">d</mi><mo>=</mo><mfrac><mrow><msub><mi mathvariant="bold">p</mi><mtext>drone</mtext></msub><mo>−</mo><msub><mi mathvariant="bold">p</mi><mtext>port</mtext></msub></mrow><mrow><mo fence="true">∥</mo><msub><mi mathvariant="bold">p</mi><mtext>drone</mtext></msub><mo>−</mo><msub><mi mathvariant="bold">p</mi><mtext>port</mtext></msub><mo fence="true">∥</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\mathbf{d} =
+\frac{\mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}}}
+{\left\| \mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}} \right\|}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathbf">d</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.23244em; vertical-align: -0.972108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.26033em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top: 0em;">∥</span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">drone</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;">∥</span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">drone</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.972108em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>Let f_port be the port’s forward direction.<br>
+Compute dot product:<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi mathvariant="bold">f</mi><mtext>port</mtext></msub><mo>⋅</mo><mi mathvariant="bold">d</mi></mrow><annotation encoding="application/x-tex">
+s = \mathbf{f}_{\text{port}} \cdot \mathbf{d}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.980548em; vertical-align: -0.286108em;"></span><span class="mord"><span style="margin-right: 0.10903em;" class="mord mathbf">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: -0.10903em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathbf">d</span></span></span></span></span></span></p>
+<p>Use a threshold derived from field-of-view angle:<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>≥</mo><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mfrac><mtext>FOV</mtext><mn>2</mn></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+s \ge \cos\left(\frac{\text{FOV}}{2}\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.77194em; vertical-align: -0.13597em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.40003em; vertical-align: -0.95003em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.36033em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">FOV</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></span></p>
+<p>Docking is valid only if:</p>
+<ul>
+<li>Distance to port ≤ dockRadius</li>
+<li>Alignment condition is satisfied</li>
+</ul>
+<hr>
+<h2 id="visual-feedback">5.2 Visual Feedback</h2>
+<p>Each port must display one of three states:</p>
+<ul>
+<li>Red → Too far</li>
+<li>Yellow → Near but misaligned</li>
+<li>Green → Properly aligned and within radius</li>
+</ul>
+<p>Simple material color changes are sufficient.</p>
+<hr>
+<h1 id="rotation-system-two-modes">6. Rotation System (Two Modes)</h1>
+<h2 id="euler-mode">6.1 Euler Mode</h2>
+<p>Maintain a Vector3 eulerState.<br>
+Each frame:</p>
+<ul>
+<li>Update pitch, yaw, roll</li>
+<li>Convert using Quaternion.Euler(eulerState)</li>
+<li>Apply rotation</li>
+</ul>
+<p>Students should observe potential gimbal lock behavior near ±90° pitch.</p>
+<hr>
+<h2 id="quaternion-mode">6.2 Quaternion Mode</h2>
+<p>Rotation must be composed incrementally using:</p>
+<ul>
+<li>Quaternion.AngleAxis(angle, axis)</li>
+<li>Apply rotation using quaternion multiplication.</li>
+<li>Rotation must occur around local axes.</li>
+</ul>
+<hr>
+<h2 id="mode-toggle">6.3 Mode Toggle</h2>
+<p>A single UI button must:</p>
+<ul>
+<li>Toggle between Euler and Quaternion modes</li>
+<li>Update its label text accordingly</li>
+</ul>
+<hr>
+<h1 id="real-time-mathematical-display">7. Real-Time Mathematical Display</h1>
+<p>The interface must display:</p>
+<ul>
+<li>Drone position (world coordinates)</li>
+<li>Euler angles (degrees)</li>
+<li>Quaternion components (x, y, z, w)</li>
+<li>Axis–Angle representation</li>
+</ul>
+<p>Axis–Angle must be computed using:</p>
+<pre class=" language-c"><code class="prism # language-c">transform<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span><span class="token function">ToAngleAxis</span><span class="token punctuation">(</span>out angle<span class="token punctuation">,</span> out axis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h1 id="docking-task-logic">8. Docking Task Logic</h1>
+<p>Minimum requirements:</p>
+<ul>
+<li>At least 3 docking ports</li>
+<li>Drone must dock at all ports</li>
+<li>Docking requires proper alignment and proximity</li>
+<li>Display a counter: Docked k/3</li>
+</ul>
+<p>Docking must require either:</p>
+<ul>
+<li>Holding alignment for at least 1 second OR</li>
+<li>Pressing a specific key while aligned</li>
+</ul>
+<p>Choose one method and document it in your report.</p>
+<hr>
+<h1 id="report-requirements-pdf-submission--word">9. Report Requirements (PDF Submission / Word)</h1>
+<p>Students must submit a short PDF (1–2 pages) explaining:</p>
+<ol>
+<li>The mathematical formula used for dot product alignment.</li>
+<li>How the threshold was computed from FOV.</li>
+<li>The difference between Euler and Quaternion rotation in your implementation.</li>
+<li>What gimbal lock is and how it was observed.</li>
+<li>Why quaternion multiplication represents composition of rotations.</li>
+</ol>
+<hr>
+<h1 id="grading-table">10. Grading Table</h1>
+
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Requirement</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scene Setup</td>
+<td>Proper scene structure and functionality</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Drone Movement</td>
+<td>Local-space vector movement with normalization</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Collision Handling</td>
+<td>No clipping through ground or obstacles</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Hierarchical Station</td>
+<td>Correct parent-child rotation implementation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Port Hierarchy</td>
+<td>Ports move because of parent transforms</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Dot Product Alignment</td>
+<td>Correct mathematical implementation</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Port Feedback States</td>
+<td>Correct red/yellow/green logic</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Two Rotation Modes</td>
+<td>Proper Euler and Quaternion implementations</td>
+<td>15</td>
+</tr>
+<tr>
+<td>UI Toggle</td>
+<td>Single button correctly toggles modes</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Real-Time Math Display</td>
+<td>Position, Euler, Quaternion, Axis–Angle</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Docking Gameplay Logic</td>
+<td>All ports dockable and tracked</td>
+<td>5</td>
+</tr>
+<tr>
+<td>PDF Report</td>
+<td>Clear mathematical explanations</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Total Earnable</strong></td>
+<td></td>
+<td><strong>90</strong></td>
+</tr>
+<tr>
+<td>Base Points</td>
+<td>Automatically granted</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td><strong>Grand Total</strong></td>
+<td></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table><hr>
+<h1 id="submission-rules">11. Submission Rules</h1>
+<ul>
+<li>Remove Library, Temp, Builds folders before submission.</li>
+<li>Project must open without errors.</li>
+<li>Code must be clearly structured and commented.</li>
+<li>External assets are optional but not required.</li>
+</ul>
+</div>
+</body>
+
+</html>
