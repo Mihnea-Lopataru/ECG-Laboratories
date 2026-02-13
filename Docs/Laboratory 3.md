@@ -244,6 +244,6 @@ After running the scene, observe the following:
 3. Why must self-rotation be applied in local space?
 4. How does the order of transformations affect the final motion?
 
-## 9. Conclusion
+## 8. Conclusion
 
 This laboratory demonstrates how hierarchical transformations and local-space rotations can be combined to create complex motion from simple components. These principles are fundamental to animation systems, camera rigs, and scene graphs used in modern computer graphics engines.
