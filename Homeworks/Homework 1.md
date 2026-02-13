@@ -221,7 +221,7 @@ Choose one method and document it in your report.
 
 ---
 
-# 9. Report Requirements (PDF Submission / Word)
+# 9. Report Requirements (PDF Submission / Word) - Optional
 
 Students must submit a short PDF (1--2 pages) explaining:
 1. The mathematical formula used for dot product alignment.
@@ -247,10 +247,10 @@ Students must submit a short PDF (1--2 pages) explaining:
 | UI Toggle | Single button correctly toggles modes | 5 |
 | Real-Time Math Display | Position, Euler, Quaternion, Axis–Angle | 10 |
 | Docking Gameplay Logic | All ports dockable and tracked | 5 |
-| PDF Report | Clear mathematical explanations | 5 |
-| **Total Earnable** |  | **90** |
+| PDF Report (Optional) | Clear mathematical explanations | 5 |
+| **Total Earnable** |  | **95** |
 | Base Points | Automatically granted | **10** |
-| **Grand Total** |  | **100** |
+| **Grand Total** |  | **105** |
 
 
 ------------------------------------------------------------------------
