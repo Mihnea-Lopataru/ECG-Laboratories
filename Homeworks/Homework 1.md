@@ -4,9 +4,9 @@
 ## General Information
 
 - Duration: 3 weeks
-- Total Points: 100
+- Total Points Worth: 100
 - Base Points (granted automatically): 10
-- Maximum Earnable Points: 90
+- Maximum Earnable Points: 95
 
 This is the first major homework assignment. It integrates concepts from:
 
@@ -76,14 +76,12 @@ Rotation must be controlled manually through code.
 Implement movement using vector mathematics.
 
 Controls:
-- W / S --- Forward / Backward
-- A / D --- Left / Right
-- Left Shift --- Up
-- Left Ctrl --- Down
+- W / S - Forward / Backward
+- A / D - Left / Right
+- Left Shift - Up
+- Left Ctrl - Down
 
 Movement must be relative to the drone's local coordinate system:
-
-  
 
 - Forward → transform.forward
 
@@ -129,14 +127,18 @@ Let:
 - p_port = port position
 
 Compute:
+
 d = (p_drone − p_port) / ||p_drone − p_port||
 
 Let f_port be the port's forward direction.
+
 Compute dot product:
+
 s = f_port · d
 
 
 Use a threshold derived from field-of-view angle:
+
 s >= cos(FOV / 2)
 
 
@@ -219,7 +221,7 @@ Choose one method and document it in your report.
 
 ---
 
-# 9. Report Requirements (PDF Submission / Word)
+# 9. Report Requirements (PDF Submission / Word) - Optional
 
 Students must submit a short PDF (1--2 pages) explaining:
 1. The mathematical formula used for dot product alignment.
@@ -245,10 +247,10 @@ Students must submit a short PDF (1--2 pages) explaining:
 | UI Toggle | Single button correctly toggles modes | 5 |
 | Real-Time Math Display | Position, Euler, Quaternion, Axis–Angle | 10 |
 | Docking Gameplay Logic | All ports dockable and tracked | 5 |
-| PDF Report | Clear mathematical explanations | 5 |
-| **Total Earnable** |  | **90** |
+| PDF Report (Optional) | Clear mathematical explanations | 5 |
+| **Total Earnable** |  | **95** |
 | Base Points | Automatically granted | **10** |
-| **Grand Total** |  | **100** |
+| **Grand Total** |  | **105** |
 
 
 ------------------------------------------------------------------------
