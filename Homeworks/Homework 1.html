@@ -13,9 +13,9 @@
 <h2 id="general-information">General Information</h2>
 <ul>
 <li>Duration: 3 weeks</li>
-<li>Total Points: 100</li>
+<li>Total Points Worth: 100</li>
 <li>Base Points (granted automatically): 10</li>
-<li>Maximum Earnable Points: 90</li>
+<li>Maximum Earnable Points: 95</li>
 </ul>
 <p>This is the first major homework assignment. It integrates concepts from:</p>
 <ul>
@@ -70,10 +70,10 @@
 <p>Implement movement using vector mathematics.</p>
 <p>Controls:</p>
 <ul>
-<li>W / S — Forward / Backward</li>
-<li>A / D — Left / Right</li>
-<li>Left Shift — Up</li>
-<li>Left Ctrl — Down</li>
+<li>W / S - Forward / Backward</li>
+<li>A / D - Left / Right</li>
+<li>Left Shift - Up</li>
+<li>Left Ctrl - Down</li>
 </ul>
 <p>Movement must be relative to the drone’s local coordinate system:</p>
 <ul>
@@ -116,21 +116,13 @@
 <li>p_drone = drone position</li>
 <li>p_port = port position</li>
 </ul>
-<p>Compute:<br>
-<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">d</mi><mo>=</mo><mfrac><mrow><msub><mi mathvariant="bold">p</mi><mtext>drone</mtext></msub><mo>−</mo><msub><mi mathvariant="bold">p</mi><mtext>port</mtext></msub></mrow><mrow><mo fence="true">∥</mo><msub><mi mathvariant="bold">p</mi><mtext>drone</mtext></msub><mo>−</mo><msub><mi mathvariant="bold">p</mi><mtext>port</mtext></msub><mo fence="true">∥</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
-\mathbf{d} =
-\frac{\mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}}}
-{\left\| \mathbf{p}_{\text{drone}} - \mathbf{p}_{\text{port}} \right\|}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathbf">d</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.23244em; vertical-align: -0.972108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.26033em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top: 0em;">∥</span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">drone</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;">∥</span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">drone</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.972108em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
-<p>Let f_port be the port’s forward direction.<br>
-Compute dot product:<br>
-<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi mathvariant="bold">f</mi><mtext>port</mtext></msub><mo>⋅</mo><mi mathvariant="bold">d</mi></mrow><annotation encoding="application/x-tex">
-s = \mathbf{f}_{\text{port}} \cdot \mathbf{d}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.980548em; vertical-align: -0.286108em;"></span><span class="mord"><span style="margin-right: 0.10903em;" class="mord mathbf">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: -0.10903em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">port</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathbf">d</span></span></span></span></span></span></p>
-<p>Use a threshold derived from field-of-view angle:<br>
-<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>≥</mo><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mfrac><mtext>FOV</mtext><mn>2</mn></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">
-s \ge \cos\left(\frac{\text{FOV}}{2}\right)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.77194em; vertical-align: -0.13597em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.40003em; vertical-align: -0.95003em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.36033em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">FOV</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></span></p>
+<p>Compute:</p>
+<p>d = (p_drone − p_port) / ||p_drone − p_port||</p>
+<p>Let f_port be the port’s forward direction.</p>
+<p>Compute dot product:</p>
+<p>s = f_port · d</p>
+<p>Use a threshold derived from field-of-view angle:</p>
+<p>s &gt;= cos(FOV / 2)</p>
 <p>Docking is valid only if:</p>
 <ul>
 <li>Distance to port ≤ dockRadius</li>
@@ -199,7 +191,7 @@ Each frame:</p>
 </ul>
 <p>Choose one method and document it in your report.</p>
 <hr>
-<h1 id="report-requirements-pdf-submission--word">9. Report Requirements (PDF Submission / Word)</h1>
+<h1 id="report-requirements-pdf-submission--word---optional">9. Report Requirements (PDF Submission / Word) - Optional</h1>
 <p>Students must submit a short PDF (1–2 pages) explaining:</p>
 <ol>
 <li>The mathematical formula used for dot product alignment.</li>
@@ -276,14 +268,14 @@ Each frame:</p>
 <td>5</td>
 </tr>
 <tr>
-<td>PDF Report</td>
+<td>PDF Report (Optional)</td>
 <td>Clear mathematical explanations</td>
 <td>5</td>
 </tr>
 <tr>
 <td><strong>Total Earnable</strong></td>
 <td></td>
-<td><strong>90</strong></td>
+<td><strong>95</strong></td>
 </tr>
 <tr>
 <td>Base Points</td>
@@ -293,7 +285,7 @@ Each frame:</p>
 <tr>
 <td><strong>Grand Total</strong></td>
 <td></td>
-<td><strong>100</strong></td>
+<td><strong>105</strong></td>
 </tr>
 </tbody>
 </table><hr>
