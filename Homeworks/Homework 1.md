@@ -4,9 +4,9 @@
 ## General Information
 
 - Duration: 3 weeks
-- Total Points: 100
+- Total Points Worth: 100
 - Base Points (granted automatically): 10
-- Maximum Earnable Points: 90
+- Maximum Earnable Points: 95
 
 This is the first major homework assignment. It integrates concepts from:
 
