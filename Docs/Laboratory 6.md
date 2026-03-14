@@ -1,5 +1,5 @@
 
-# Laboratory 6 --- Triangle Geometry in Unity
+# Laboratory 6 - Triangle Geometry in Unity
 
   
 
