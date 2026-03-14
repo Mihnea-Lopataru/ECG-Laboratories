@@ -33,9 +33,8 @@ Create a new Unity scene called: Lab6_TriangleGeometry
 - A **Ground Plane**
 - A **Camera**
 - A **Directional Light**
-- 
-- Three objects representing triangle vertices:
 
+Three objects representing triangle vertices:
 -  `Vertex_A`
 -  `Vertex_B`
 -  `Vertex_C`
